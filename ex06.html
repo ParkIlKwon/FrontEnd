@@ -10,15 +10,16 @@
             background: red;
         }
         /*
-        position은 디폴트가 static이다 
-
+            절대위치(absolute) : 위치좌표 고정 : 그 위치에서 움직이지않는다 
+            상대위치(relative) : 상위박스(부모박스)를 기준으로 상위박스가 움직이면 같이 움직인다 
+            fixed: 화면을 기준으로 절대위치 
+            sticky : 부모박스의 상대적 위치값에서 화면의 기준으로 절대위치 
         */
         .container{
             background: yellow;
             position: relative;
             left: 20px;
             top : 20px;
-
 
         }
         /*
@@ -28,12 +29,12 @@
         */
         .box{
             background: blue;
-            position: absolute;
+            /* position: absolute; */
+            /* position: fixed; */
             /*
-            position: absolute;
             position: fixed;
-            position: sticky;
             */
+            position: sticky;
             left: 20px;
             top : 20px;
         }
