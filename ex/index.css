@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    display: grid;
+    height: 30vh;
+    grid-template-columns:1fr 1fr 1fr;
+}
+
+ul{
+    display: grid;
+    list-style:none;
+    grid-template-columns:1fr 1fr 1fr;
+}
+
+.h1{
+    background-color: dimgrey;
+    grid-area: h1;
+}
+
+.one{
+    background-color: aqua;
+    grid-area: one;
+}
+
+.two{
+    background-color: darkslategrey;
+    grid-area: two;
+}
+
+.three{
+    background-color: palegreen;
+    grid-area: three;
+}
