@@ -60,7 +60,7 @@ li{
     flex-grow: 1;
     grid-template: "item item item item";
     gap: 10px;
-
+    
     /* 가로를 기준으로 세로값이 상대적으로 작게 */
     aspect-ratio: 6 / 5;
 }
