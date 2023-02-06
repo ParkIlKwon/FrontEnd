@@ -1,0 +1,39 @@
+.container{
+    background-color: pink;
+    height: 75px;
+}
+
+#intro{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+}
+
+.logo{
+    grid-area: logo;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.menu{
+    grid-area: menu;
+    display: grid;
+    grid-template: "one two three" 1fr/ 1fr 1fr 1fr;
+}
+
+.one{
+    grid-area: one;
+
+}
+.two{
+    grid-area: two;
+
+}
+.three{
+    background-color: lightslategrey;
+    grid-area: three;
+}
+
+ul{
+    list-style: none;
+}

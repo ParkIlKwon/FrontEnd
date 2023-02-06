@@ -1,0 +1,48 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+.combine{
+    height: 75px;
+    display: grid;
+    margin-top: 5px;
+    grid-template: 
+    "h1 ul" 1fr/ 1fr 1fr
+    ;
+}
+
+.logo{
+    display: block;
+    background-color:rgb(224, 224, 224);
+    text-decoration: none;
+    height: 100%;
+    grid-area: h1;
+    padding-left:50px;
+    margin-left: 50px;
+}
+
+ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100%;
+    list-style-type: none;
+    grid-column: ul;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.one{
+    background-color: rgb(226, 225, 225);
+    padding-top: 10px;
+}
+.two{
+    background-color: rgb(202, 202, 202);
+    padding-top: 10px;
+}
+.three{
+    background-color: darkgrey;
+    padding-top: 10px;
+}
+
