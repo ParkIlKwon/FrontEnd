@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="title"> 유저 검색 </h1>
+    <input type="text" class="input_userId">
+    <p class="res"></p>
+    <script>
+        const userDataList = [
+            { id: 1001, name: '홍길동' },
+            { id: 1002, name: '유재석' },
+            { id: 1003, name: '하하' },
+            { id: 1004, name: '노홍철' },
+            { id: 1005, name: '길' },
+        ]
+
+        const input = document.querySelector("input");
+        const p = document.querySelector("p");
+        // 문자가 입력 받을때마다 체크 
+        input.addEventListener('keyup', () => {
+            if (event.key === 'Enter') {
+                let str = event.target.value;
+                console.log(str);
+                // for (let index = 0; index < userDataList.length; index++) {
+                //     if (userDataList[index].id == str) {
+                //         alert(userDataList[index].id);
+                //         p.innerHTML = userDataList[index].name;
+                //         return;
+                //     }
+                // }
+                console.log(userDataList.indexOf(
+                e => (e.id === str)));
+            }
+        })
+    </script>
+</body>
+
+</html>
