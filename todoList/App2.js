@@ -16,10 +16,39 @@ const total = 10;
         {name:"조영곤", count:3},
     ];
 
-let percent = 
 const list = document.querySelector(".list");
+const rank = [];
 
 addEventListener("load",e => makeGraph())
 function makeGraph() {
-    
+
+    for (let i = 0; i < data.length ; i++) {
+        let max = data[i].count;
+        for (let k = 0; k < i; k++) {
+            if(max > data[k].count){
+                let temp1 = data[i];
+                let temp2 = data[k];
+                max = data[k].count;
+                data[i] = temp2;
+                data[k] = temp1;
+            }
+        }
+    }
+
+
+    for (let index = 0; index < data.length; index++) {
+        let temp = data[index];
+        let percent = data[index].count *10;
+        let element = document.createElement('div');
+        element.classList.add('item');
+        console.log(percent);
+        element.innerHTML= `<div class="inner" style="width:${percent}%;">
+        <div class="name">${data[index].name}</div>
+        <div class="percent">${percent}</div>
+    </div>`
+        list.appendChild(element);
+    }
+    let hr = document.createElement('hr');
+    list.appendChild(hr);
 }
+

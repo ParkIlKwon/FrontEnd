@@ -20,6 +20,7 @@
         .container {
             width:100%;
             margin:0 auto;
+            overflow-y: scroll;
         }
         .list {
             display: grid;
@@ -31,7 +32,7 @@
 
         .item {
             width:100%;
-            background-color: #ddd;
+            background-color: #dad6d6;
             border-radius: 5px;
         }
         .inner {
@@ -46,7 +47,7 @@
 
         .inner .name {
             border-radius: 5px;
-            /* background-color: #29b6f6; */
+            background-color: rgb(145, 149, 153);
             color:#fff;
             font-size:13px;
             margin-left:20px;
@@ -55,6 +56,10 @@
         .inner .percent {
             color:#fff;
             margin-right:20px;
+        }
+        hr{
+            border: solid 4px slategrey;
+            margin: 10px;
         }
     </style>
 </head>
@@ -68,13 +73,7 @@
                     <div class="percent">15%</div>
                 </div>
             </div>
-            <div class="item">
-                <div class="inner" style="width:20%;">
-                    <div class="name">박연미</div>
-                    <div class="percent">20%</div>
-                </div>
-            </div>
-        </div>        
+        </div> 
     </div>
 </body>
 </html>
