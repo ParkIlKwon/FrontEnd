@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            background-color: mediumslateblue;
+            border: magenta 1px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            color: aliceblue;
+
+        }
+
+        .contatiner {
+            display: grid;
+            grid-template-columns: 8fr 2fr;
+            grid-gap: 20px;
+            background-color: rgb(202, 200, 200);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 60px;
+            /* 화면에 보여지는 높이값 viewheight */
+            height: 100vh;
+            background-color: aquamarine;
+            overflow-y: scroll;
+            grid-gap: 20px;
+        }
+
+        .nav {
+            padding: 20px;
+        }
+
+        .nav .addBtn {
+            width: 100%;
+            border: none;
+            background-color: royalblue;
+            color: aliceblue;
+            padding: 20px;
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contatiner">
+        <div class="grid">
+            <div class="box"> 서울 </div>
+        </div>
+        <div class="nav">
+            <button class="addBtn">추가하기</button>
+        </div>
+    </div>
+
+    <script>
+        let data = ["충주", "대구", "경기", "광주", "제주", "용인"];
+        let btn = document.querySelector(".addBtn");
+        let grid = document.querySelector(".grid");
+        let cnt = 0;
+        btn.addEventListener('click', e => {
+            for (let index = 0; index < data.length; index++) {
+                setTimeout(() => {
+                    if (cnt <= data.length - 1) {
+                        let box = document.createElement("div");
+                        box.classList.add("box");
+                        box.innerHTML = `${data[cnt]}`;
+                        grid.appendChild(box);
+                        cnt++;
+                    }
+                }, index * 300);
+            }
+
+        })
+    </script>
+</body>
+
+</html>
