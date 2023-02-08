@@ -21,10 +21,12 @@
 
     function myReverse(arr){
         let idx = arr.length-1;
+
         for (let index = 0; index < 2; index++) {
-            let temp = arr[idx- index];
-            arr[index] = arr[idx-index];
-            arr[idx-index] = temp; 
+            let temp = arr[idx - index];
+            let temp2 = arr[index];
+            arr[index] = temp;
+            arr[idx-index] = temp2; 
         }
     }
 
