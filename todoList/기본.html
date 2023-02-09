@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박스테스트</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 10px;
+            padding: 10px;
+        }
+        .box{
+            display: flex;
+            flex-direction:row ;
+        }
+        span{
+
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        input{
+            border: 2px solid yellowgreen;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <span class="box1"></span>
+            <span class="box2"></span>
+            <span class="box3"></span>
+            <span class="box4"></span>
+            <span class="box5"></span>
+        </div>
+        <input type="text">
+    </div>
+
+    <script>
+        let counter = 1;
+        const boxset = document.querySelectorAll('span');
+        const input = document.querySelector('input');
+        const box1 = boxset[0];
+        const box2 = boxset[1];
+        const box3 = boxset[2];
+        const box4 = boxset[3];
+        const box5 = boxset[4];
+
+        box1.addEventListener('click',()=>{
+            box1.innerHTML=counter;
+            counter ++;
+        })
+
+        box2.addEventListener('click',()=>{
+            box2.innerHTML=counter;
+            counter ++;
+        })
+
+        box3.addEventListener('click',()=>{
+            box3.innerHTML=counter;
+            counter ++;
+        })
+
+        box4.addEventListener('click',()=>{
+            box4.innerHTML=counter;
+            counter ++;
+        })
+
+        box5.addEventListener('click',()=>{
+            box5.innerHTML=counter;
+            counter ++;
+        })
+
+        input.addEventListener('keydown', (event) => {
+            let flag = false;
+            let div;
+            for (let index = 0; index < boxset.length; index++) {
+                if(boxset[index].innerHTML === event.key){
+                    div = document.querySelector(`.${boxset[index].className}`);
+                    div.remove;
+                    div.style = `background-color: red`;
+                    div.innerHTML ="";
+                    flag = true;
+                }
+            }
+            if(flag == false){
+                for (let index = 0; index < boxset.length; index++) {
+                    boxset[index].style = `background-color: white`;
+            }
+            }
+        });
+        
+    </script>
+</body>
+</html>
