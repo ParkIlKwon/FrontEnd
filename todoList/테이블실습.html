@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적표</title>
+    <style>
+        table,
+        td {
+            border: 1px solid black;
+            width: 100vh;
+            height: 10vh;
+            text-align: center;
+            font-size: large;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .list{
+            font-weight: bolder;
+        }
+        .no{
+            width: 10%;
+
+        }
+        .bottom{
+            font-size: 20px;
+        }
+
+        .table2{
+            margin-left: 10px;
+            border: 1px solid black;
+            width: 100vh;
+            height: 100%;
+            text-align: center;
+            font-size: large;
+        }
+        img{
+            object-fit: cover;
+            width: 100%;
+            height: 400%;
+        }
+        .table2 tr :nth-child(1){
+            background-color: bisque;
+        }
+
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="4">성적표</td>
+        </tr>
+        <tr class="list" >
+                <td>QT</td>
+                <td class="no">NO</td>
+                <td>name</td>
+                <td>score</td>
+            </tr>
+
+        <tr>
+            <td rowspan="5">1분기</td>
+        </tr>
+        <tr>
+            <td class="no">1</td>
+            <td>홍길동</td>
+            <td>88</td>
+        </tr>
+        <tr>
+            <td class="no">2</td>
+            <td>도우너</td>
+            <td>77</td>
+        </tr>
+        <tr>
+            <td class="no">3</td>
+            <td>홍둘리</td>
+            <td>66</td>
+        </tr>
+        <tr>
+            <td class="no">4</td>
+            <td>또치</td>
+            <td>44</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="bottom">테이블의 위치가 맨하단</td>
+        </tr>
+    </table>
+
+    <table class="table2">
+        <tr>
+            <td colspan="4" class="list">표1</td>
+        </tr>
+        <tr>
+            <td>
+                100
+            </td>
+
+            <td>
+                200
+            </td>
+            <td rowspan="2">
+                <img src="item1.jpeg">
+            </td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td>500</td>
+        </tr>
+        <tr>
+            <td colspan="4">700</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

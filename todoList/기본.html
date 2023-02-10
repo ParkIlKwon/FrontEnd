@@ -31,6 +31,18 @@
             border: 2px solid yellowgreen;
         }
 
+        .deleteBox{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+        }
+
+        .active{
+            background-color: green;
+        }
     </style>
 </head>
 <body>
@@ -43,41 +55,37 @@
             <span class="box5"></span>
         </div>
         <input type="text">
+
+        <div class="deleteBox">X</div>
     </div>
 
     <script>
         let counter = 1;
-        const boxset = document.querySelectorAll('span');
+        const boxset = [...document.querySelectorAll('span')];
         const input = document.querySelector('input');
-        const box1 = boxset[0];
-        const box2 = boxset[1];
-        const box3 = boxset[2];
-        const box4 = boxset[3];
-        const box5 = boxset[4];
+        const deleteBox = document.querySelector('.deleteBox');
 
-        box1.addEventListener('click',()=>{
-            box1.innerHTML=counter;
-            counter ++;
-        })
+        deleteBox.addEventListener('dragover',e=>e.preventDefault());
+        deleteBox.addEventListener("drop", (e) => {
+     
+            deleteAction(e.dataTransfer.getData('num'));
+        });
 
-        box2.addEventListener('click',()=>{
-            box2.innerHTML=counter;
-            counter ++;
-        })
-
-        box3.addEventListener('click',()=>{
-            box3.innerHTML=counter;
-            counter ++;
-        })
-
-        box4.addEventListener('click',()=>{
-            box4.innerHTML=counter;
-            counter ++;
-        })
-
-        box5.addEventListener('click',()=>{
-            box5.innerHTML=counter;
-            counter ++;
+        
+        
+        boxset.forEach((box)=>{
+            box.addEventListener('dragstart',e=>{
+                console.log(e.target.innerHTML);
+                
+                e.dataTransfer.setData('num',e.target.innerHTML);
+               // alert(e.dataTransfer.getData('num'));
+                e.target.classList.add('active');
+            })
+            box.setAttribute("draggable","true");
+            box.addEventListener('click',()=>{
+                box.innerHTML = counter;
+                counter ++;
+            })
         })
 
         input.addEventListener('keydown', (event) => {
@@ -98,6 +106,12 @@
             }
             }
         });
+
+        function deleteAction(num) {
+            let boxCon = document.querySelector(".box") 
+            let foundBox = boxset.find((box)=> box.innerHTML==num);
+            boxCon.removeChild(foundBox);
+        }
         
     </script>
 </body>
