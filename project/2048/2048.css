@@ -27,8 +27,12 @@
 
     font-size: 15px;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 2x;
+
+}
+.currentscore{
+    text-align: center;
 }
 
 body{
@@ -92,6 +96,10 @@ td{
     text-align: center;
     font-size: 5vh;
     color: rgb(95, 95, 95);
+}
+
+.blank{
+    font-size: 0;
 }
 
 .lowRange{

@@ -2,6 +2,7 @@ let tableArray = [...document.querySelectorAll('td')];
 let tempArr = Array.from(Array(4), () => new Array(4));
 const topBtn = document.querySelector('.sideTop');
 const leftBtn = document.querySelector('.sideLeft');
+const score = document.querySelector('.currentscore');
 
 window.onload = setGame();
 function setGame() {
@@ -26,9 +27,10 @@ function getArray(arr) {
     let index = 0;
     for(let i = 0 ; i < 4 ; i++){
         for(let k = 0 ; k < 4 ; k++){
-            if(arr[i][k] != 0){
-                tableArray[index].innerHTML = '2';
-            }
+                tableArray[index].innerHTML = arr[i][k];
+                if(tableArray[index].innerHTML == 0){
+                    tableArray[index].className = "";
+                }
             index++;
         }
     }
@@ -40,7 +42,7 @@ function setBackground() {
         if(e.innerHTML >= 2){
             e.className = 'lowRange';
         }else{
-            e.className = '';
+            e.className = 'blank';
         }
     })
 }
@@ -53,10 +55,13 @@ topBtn.addEventListener('click',()=>{
         let flag = false;
         for(let i = 0 ; i < temp.length ; i++){
             for(let k = 0 ; k < 3 ; k++){
-                if(temp[k][i] == temp[k+1][i]){
+                if(temp[k][i] != 0 && temp[k][i] == temp[k+1][i]){
                     mergeCheck = true;
                     flag = true;
                     temp[k+1][i] = 0;
+                    let scores = parseInt(score.innerHTML);
+                    scores += parseInt(temp[k][i]);
+                    score.innerHTML = scores;
                     temp[k][i]*=2;
                 }
             }
@@ -73,7 +78,9 @@ topBtn.addEventListener('click',()=>{
                     }
                 }
             }
+
             tempArr = temp.map(e => [...e]);
+            console.log(tempArr);
             getArray(tempArr);
         }
     
