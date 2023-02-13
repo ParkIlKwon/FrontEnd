@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+.container{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table{
+    height: 1px;
+    border: 1px solid black;
+}
+
+tr{
+
+}

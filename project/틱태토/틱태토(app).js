@@ -5,35 +5,53 @@ const resetButton = document.querySelector('.reset');
 const main = document.querySelector('.main');
 const start = document.querySelector('.start');
 const body = document.querySelector('body');
+const container = document.querySelector('.container');
 let arr = new Array(3);
 let count = 0 ;
 
+start.addEventListener('click',()=>{
+    main.style = 'z-index:0';
+    container.style = 'z-index:1';
+})
 
+function gameReset() {
+    count = 0;
+    setTimeout(()=>{
+        table.forEach((e)=>{
+            e.innerHTML = "";
+            e.style = 'background : white'
+            main.style = 'z-index:1';
+            container.style = 'z-index:0';
+        })
+    },2000)
+}
 
 table.forEach((e)=>{
     
     e.addEventListener('click',()=>{
-        count++;
-    
+        
         if(e.innerHTML != ''){
             alert('그곳에는 클릭할수 없습니다.');
             return;
         }
+        count++;
         
         e.style = turn == true ? 
         'background : orange' :
         'background : grey';
         e.innerHTML = turn == true ?  'o' : 'x';
-        console.log(checkEnd(getarr()));
-        if(count == table.length) {
-            console.log('무승부');
-            setTimeout(()=>{
-                table.forEach((e)=>{
-                    e.innerHTML = "";
-                    e.style = 'background : white'
+        if(checkEnd(getarr())){
+            if(!!turn){
+                alert('O승리')
+            }else{  
+                alert('X승리')
+            }
+            gameReset();
+        }
 
-                })
-            },2000)
+        if(count == table.length) {
+            alert('무승부');
+            gameReset();
         }
         turn = turn == true ? false : true;
     })
@@ -72,6 +90,10 @@ function checkEnd(arr){
             flag = true;
         }
     } 
-
+    if(arr[1][1] != "" && (arr[1][1] == arr[0][0] && arr[1][1] == arr[2][2]
+        || arr[1][1] == arr[0][2] && arr[1][1] == arr[2][0]) ){
+            flag = true;
+        }
+        
     return flag;
 }

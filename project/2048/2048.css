@@ -1,0 +1,100 @@
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    height: 60vh;
+    width: 60vh;
+    flex-direction: column;
+    background-color: rgb(230, 230, 189);
+    margin-left: 25vh;
+}
+.top{
+    height: 10%;
+    display: flex;
+    position: relative;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bolder;
+    justify-content: space-between;
+    color: rgb(63, 62, 62);
+}
+.scoreBox{
+    height: 5vh;
+    width: 15vh;
+    display: flex;
+
+    font-size: 15px;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2x;
+}
+
+body{
+    display: flex;
+    background-color: beige;
+    margin: 20px;
+
+}
+
+.sideBar{
+    height: 15vh;
+    width: 12ch;
+    border-radius: 1000px;
+    margin-top: 40vh;
+    margin-left: 20px;
+}
+.sideMenu{
+    background-color: antiquewhite;
+    height: 100%;
+    width: 100%;
+    border-radius: 1000px;
+}
+
+.sideMenu td{
+    font-size: 20px;
+    height: 10px;
+    width: 3vh;
+    border-radius: 1000px;
+}
+
+.sideTop , .sideBottom{
+    width: 5px;
+}
+
+.main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table{
+    height: 10vh;
+    width: 50vh;
+    border-spacing: 10px;
+    border-collapse: separate;
+    background-color: rgb(167, 166, 166);
+    border-radius: 5px;
+}
+
+td{
+    table-layout: fixed;
+    margin-left: 10px;
+    height: 10vh;
+    width: 50px;
+    border: 1px solid rgb(216, 212, 212);
+    background-color: rgb(207, 199, 199);
+    border-radius: 2px;
+    font-weight: 900;
+    text-align: center;
+    font-size: 5vh;
+    color: rgb(95, 95, 95);
+}
+
+.lowRange{
+    background-color: rgb(243, 232, 217);
+}
+
