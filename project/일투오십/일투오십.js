@@ -51,7 +51,7 @@ window.onload=setting();
 
 array.forEach(e=>{
     e.addEventListener('click',element => {
-        console.log(count);
+        // console.log(count);
         if(element.target.innerHTML == count){
             if(timeflag == false){
                 timeflag = true;
