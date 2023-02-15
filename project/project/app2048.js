@@ -4,6 +4,7 @@ const clear = document.querySelector(".clear");
 const topBtn = document.querySelector('.sideTop');
 const leftBtn = document.querySelector('.sideLeft');
 const rightBtn = document.querySelector('.sideRight');
+const bottomBtn = document.querySelector('.sideBottom');
 const score = document.querySelector('.currentscore');
 let mergeCheck = false;
 
@@ -37,16 +38,25 @@ function getArray(arr) {
     }
     setBackground();
 
-    if(score.innerHTML >= 16){
+    if(score.innerHTML >= 20000){
         object.clearObj.style = 'z-index :5';
 
         let time = setTimeout(()=>{
             object.clearObj.style = 'z-index :-1';
-            object.game1.style = 'z-index :-4';
+            object.game1.style = 'z-index :-2';
             object.mainObj.style = 'z-index :1';
         },2000)
         mList[0].clear = true;
+    }else if(isover(arr)){
+        object.fail.style = 'z-index :5';
+
+        let time = setTimeout(()=>{
+            object.fail.style = 'z-index :-1';
+            object.game1.style = 'z-index :-2';
+            object.mainObj.style = 'z-index :1';
+        },2000)
     }
+
 }
 
 function setBackground() {
@@ -60,7 +70,6 @@ function setBackground() {
 }
 
 topBtn.addEventListener('click',()=>{
-    console.log(tempArr);
     let temp = tempArr.map(e => [...e]);
     mergeCheck = false;
     
@@ -142,13 +151,6 @@ leftBtn.addEventListener('click',(e)=>{
     }
     
     if(mergeCheck == true){
-        for(let i = 0 ; i < 3 ; i++){
-            for(let k = 0 ; k < 4 ; k++){
-                if(temp[i][k] == 0 ){
-                    temp[i][k] = temp[i+1][k];
-                    }
-                }
-            }
 
             tempArr = temp.map(e => [...e]);
             ranNum(tempArr);
@@ -163,7 +165,6 @@ rightBtn.addEventListener('click',(e)=>{
     while (true) {
         let check = true;
         for(let i = 0 ; i < 4 ; i++){
-
                 for(let k = 3 ; k > 0 ; k--){
                     if(check == true && temp[i][k] == 0 && temp[i][k-1] != 0){
                         let num = temp[i][k-1];
@@ -200,7 +201,6 @@ rightBtn.addEventListener('click',(e)=>{
             break;
     }
     
-    
     if(mergeCheck == true){
 
             console.log(temp);
@@ -209,7 +209,6 @@ rightBtn.addEventListener('click',(e)=>{
             getArray(tempArr);
         }
 })
-
 
 function ranNum(arr) {
     let count = parseInt(Math.random()*1)+1;
@@ -225,4 +224,73 @@ function ranNum(arr) {
             }
         }
     }
+}
+
+bottomBtn.addEventListener('click',()=>{
+    console.log(tempArr);
+    let temp = tempArr.map(e => [...e]);
+    mergeCheck = false;
+    
+    for(let i = 0 ; i < temp.length ; i++){
+        for(let k = temp.length-1 ; k > 0  ; k--){
+            if(temp[k][i] == 0 && temp[k-1][i] != 0){
+                console.log(k,i);
+                temp[k][i] = temp[k-1][i];
+                temp[k-1][i] = 0;
+                i = 0;
+                k = temp.length;
+                mergeCheck = true;
+                }
+            }
+        }
+    
+
+    while(true){
+        let flag = false;
+        for(let i = 0 ; i < temp.length ; i++){
+            for(let k = temp.length-1 ;k > 0 ; k--){
+                if(temp[k][i] != 0 && temp[k][i] == temp[k-1][i]){
+                    mergeCheck = true;
+                    flag = true;
+                    temp[k-1][i] = 0;
+                    let scores = parseInt(score.innerHTML);
+                    scores += parseInt(temp[k][i]);
+                    score.innerHTML = scores;
+                    temp[k][i]*=2;
+                    i = 0 ;
+                    k = 0;
+                }
+            }
+        }
+            break;
+    }
+
+    if(mergeCheck == true){
+
+            tempArr = temp.map(e => [...e]);
+            ranNum(tempArr);
+            getArray(tempArr);
+        }
+})
+
+function isover(arr) {
+    let x = [0,0,-1,1];
+    let y = [1,-1,0,0];
+    let check = true;
+
+    for(let i = 0 ; i < x.length; i++){
+        for(let k = 0 ; k < 4; k++){
+            for(let kk = 0 ; kk < 4; kk++){
+                let tx = k + x[kk];
+                let ty = i + y[kk];
+                let temp = arr[i][k];
+                if(tx >= 0 && ty >= 0 && tx < 4 && ty < 4){
+                    if(arr[ty][tx] == 0 ||arr[ty][tx] == temp ){
+                        check = false;
+                    } 
+                }
+            }
+        }
+    }
+    return check;
 }

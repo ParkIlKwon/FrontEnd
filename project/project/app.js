@@ -8,6 +8,8 @@ class obj{
         this.mainObj = document.querySelector(".main");
         this.clearObj = document.querySelector(".clear");
         this.game1 = document.querySelector(".game2048");
+        this.life = document.querySelector("#life");
+        this.fail = document.querySelector(".fail");
     }
 }
 let object = new obj;
@@ -45,6 +47,7 @@ window.onload = function () {
 
     mList.forEach((e) => {e.init(index+=120 ,90,50,strArr[cnt++])})
     mList.forEach((e) => {console.log(e);})
+    setGame();
 }
 
 function draw() {
