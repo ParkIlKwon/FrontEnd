@@ -1,14 +1,21 @@
-*{
-    box-sizing: border-box;
+.game2048{
+    width: 700px;
+    height: 650px;
+    background-color: antiquewhite;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 23px;
 }
 
-.container{
+.container2048{
     display: flex;
     height: 60vh;
     width: 60vh;
     flex-direction: column;
     background-color: rgb(230, 230, 189);
-    margin-left: 25vh;
+
 }
 .top{
     height: 10%;
@@ -20,6 +27,7 @@
     justify-content: space-between;
     color: rgb(63, 62, 62);
 }
+
 .scoreBox{
     height: 5vh;
     width: 15vh;
@@ -35,12 +43,6 @@
     text-align: center;
 }
 
-body{
-    display: flex;
-    background-color: beige;
-    margin: 20px;
-
-}
 
 .sideBar{
     height: 15vh;
@@ -49,6 +51,7 @@ body{
     margin-top: 40vh;
     margin-left: 20px;
 }
+
 .sideMenu{
     background-color: antiquewhite;
     height: 100%;
@@ -67,7 +70,7 @@ body{
     width: 5px;
 }
 
-.main{
+.main2048{
     height: 100%;
     width: 100%;
     display: flex;
@@ -78,6 +81,7 @@ body{
 table{
     height: 10vh;
     width: 50vh;
+
     border-spacing: 10px;
     border-collapse: separate;
     background-color: rgb(167, 166, 166);
@@ -87,8 +91,9 @@ table{
 td{
     table-layout: fixed;
     margin-left: 10px;
-    height: 10vh;
+    height: 80px;
     width: 50px;
+    max-width: 50px;
     border: 1px solid rgb(216, 212, 212);
     background-color: rgb(207, 199, 199);
     border-radius: 2px;
@@ -104,5 +109,17 @@ td{
 
 .lowRange{
     background-color: rgb(243, 232, 217);
+}
+
+.clear{
+    position: fixed;
+    width: 700px;
+    height: 650px;
+    background-color: rgba(133, 131, 131, 0.5);
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 300px;
 }
 

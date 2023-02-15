@@ -83,6 +83,5 @@ topBtn.addEventListener('click',()=>{
             console.log(tempArr);
             getArray(tempArr);
         }
-    
 
 })

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project</title>
+</head>
+    <script src="app.js" defer></script>
+    <script src="gameapp.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="game2048.css">
+    <script src="app2048.js" defer></script>
+<body>
+    <div class="container">
+        <div class="main">
+            <canvas id="canvas" width="700" height="650"></canvas>
+            <div class="life">♥♥♥</div>
+        </div>
+
+        <div class="clear">clear!</div>
+        <div class="game2048">
+            <div class="container2048">
+                <div class="top">
+                    2048
+                    <div class="scoreBox">
+                        <div class="currentscoreBox"> 
+                            <div class="currentTitle">score</div>
+                        <div class="currentscore">0</div>    </div>
+                        <div class="topscore">
+                            <div class="topTitle">top</div>
+                            2048</div>
+                    </div> 
+                </div>
+                <div class="main2048">
+                    <table>
+                        <tr>
+                            <td class="lowRange">2</td>
+                            <td class="lowRange">2</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="lowRange">2</td>
+                            <td class="lowRange">4</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="sideBar">
+                <table class="sideMenu">
+                    <tr>
+                        <td colspan="3" class="sideTop">▲</td>
+                    </tr>
+                    <tr>
+                        <td class="sideLeft">◀</td>
+                        <td class="sideHome">●</td>
+                        <td class="sideRight">▶</td>
+                    </tr>
+                        <tr>
+                            <td colspan="3" class="sideBottom">▼</td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="tic"> -->
+
+        </div>
+    </div>
+</body>
+</html>
