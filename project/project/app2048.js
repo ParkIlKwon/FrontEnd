@@ -6,6 +6,7 @@ const leftBtn = document.querySelector('.sideLeft');
 const rightBtn = document.querySelector('.sideRight');
 const bottomBtn = document.querySelector('.sideBottom');
 const score = document.querySelector('.currentscore');
+const homeBtn = document.querySelector('.sideHome');
 let mergeCheck = false;
 
 function setGame() {
@@ -21,7 +22,6 @@ function setGame() {
         }
     }
     getArray(tempArr);
-
 }
 
 function getArray(arr) {
@@ -38,7 +38,7 @@ function getArray(arr) {
     }
     setBackground();
 
-    if(score.innerHTML >= 20000){
+    if(score.innerHTML >= 200){
         object.clearObj.style = 'z-index :5';
 
         let time = setTimeout(()=>{
@@ -48,8 +48,33 @@ function getArray(arr) {
         },2000)
         mList[0].clear = true;
     }else if(isover(arr)){
-        object.fail.style = 'z-index :5';
+        failAction();
+    }
+}
 
+function setBackground() {
+    tableArray.forEach((e)=>{
+        if(e.innerHTML >= 128){
+            e.className = 'midiumRange';
+        }else if(e.innerHTML >= 32){
+            e.className = 'lowRange3';
+        }else if(e.innerHTML >= 16){
+            e.className = 'lowRange2';
+        }else if(e.innerHTML >= 2){
+            e.className = 'lowRange';
+        }else{
+            e.className = 'blank';
+        }
+    })
+}
+
+function failAction() {
+    object.fail.style = 'z-index :5';
+    let lifeCnt = object.life.innerHTML.length-1
+    object.life.innerHTML='';
+    for(let i = 0 ; i < lifeCnt ; i++){
+        object.life.innerHTML+='♥';
+    }
         let time = setTimeout(()=>{
             object.fail.style = 'z-index :-1';
             object.game1.style = 'z-index :-2';
@@ -57,17 +82,9 @@ function getArray(arr) {
         },2000)
     }
 
-}
-
-function setBackground() {
-    tableArray.forEach((e)=>{
-        if(e.innerHTML >= 2){
-            e.className = 'lowRange';
-        }else{
-            e.className = 'blank';
-        }
-    })
-}
+homeBtn.addEventListener('click',()=>{
+    failAction();
+})
 
 topBtn.addEventListener('click',()=>{
     let temp = tempArr.map(e => [...e]);
@@ -85,7 +102,6 @@ topBtn.addEventListener('click',()=>{
             }
         }
     
-
     while(true){
         let flag = false;
         for(let i = 0 ; i < temp.length ; i++){

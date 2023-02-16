@@ -8,19 +8,20 @@ class obj{
         this.mainObj = document.querySelector(".main");
         this.clearObj = document.querySelector(".clear");
         this.game1 = document.querySelector(".game2048");
+        this.game2 = document.querySelector(".tic");
         this.life = document.querySelector("#life");
         this.fail = document.querySelector(".fail");
+        this.runningGame = false;
     }
 }
 let object = new obj;
 
 let player = { "x": 200, "y": canvas.height, "size": 50, "speed": 3 };
-let strArr = ['-2048-','-틱택토-','미정','미정'];
+let strArr = ['-2048-','-틱택토-','-장애물넘기-','   미정'];
 let keyDown = {};
 let gameArr = {};
 let mList = [];
 let time = window.setInterval(draw, 10);
-let runningGame = false;
 
 let machineImg = new Image();
 machineImg.src = "./gamemachine.png";
@@ -80,6 +81,13 @@ function crash() {
         setGame();
     }else if(player.y <= 145 && (player.x >= 270 && player.x <=340)){
         player.y += 50;
+        if(mList[1].clear == true){
+            return;
+        }
+        initTic();
+        object.game2.style = 'z-index :3';
+        main.style = 'z-index :0';
+        object.runningGame = true;
     }
 }
 

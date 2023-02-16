@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>project</title>
 </head>
-    <script src="app.js" defer></script>
-    <script src="gameapp.js" defer></script>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="game2048.css">
-    <script src="app2048.js" defer></script>
+<script src="app.js" defer></script>
+<script src="gameapp.js" defer></script>
+<script src="hurdle.js" defer></script>
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="game2048.css">
+<link rel="stylesheet" href="tictactoe.css">
+<link rel="stylesheet" href="jumpGame.css">
+<script src="app2048.js" defer></script>
+<script src="tictactoe.js" defer></script>
+<script src="jumpGame.js" defer></script>
+
 <body>
     <div class="container">
         <div class="main">
@@ -25,13 +32,15 @@
                 <div class="top">
                     2048
                     <div class="scoreBox">
-                        <div class="currentscoreBox"> 
+                        <div class="currentscoreBox">
                             <div class="currentTitle">score</div>
-                        <div class="currentscore">0</div>    </div>
+                            <div class="currentscore">0</div>
+                        </div>
                         <div class="topscore">
                             <div class="topTitle">top</div>
-                            2048</div>
-                    </div> 
+                            2048
+                        </div>
+                    </div>
                 </div>
                 <div class="main2048">
                     <table>
@@ -72,15 +81,41 @@
                         <td class="sideHome">●</td>
                         <td class="sideRight">▶</td>
                     </tr>
-                        <tr>
-                            <td colspan="3" class="sideBottom">▼</td>
-                        </tr>
+                    <tr>
+                        <td colspan="3" class="sideBottom">▼</td>
+                    </tr>
                 </table>
             </div>
         </div>
 
-        <div class="tic"> -->
+        <div class="tic">
+            <div class="containertic">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
+        <div class="jumpGame">
+            <div class="containerJump">
+                <div class="jlife"></div>
+                <div class="jgragh"></div>
+                <canvas id="canvas" width="700" height="650"></canvas>
+            </div>
         </div>
     </div>
 </body>

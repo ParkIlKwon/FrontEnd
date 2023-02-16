@@ -2,11 +2,11 @@
     width: 700px;
     height: 650px;
     background-color: antiquewhite;
-    z-index: 1;
+    z-index: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 23px;
+    margin-left: 22px;
 }
 
 .container2048{
@@ -109,6 +109,15 @@ td{
 
 .lowRange{
     background-color: rgb(243, 232, 217);
+}
+.lowRange2{
+    background-color: rgb(238, 217, 190);
+}
+.lowRange3{
+    background-color: rgb(240, 201, 150);
+}
+.midiumRange{
+    background-color: rgb(255, 123, 0);
 }
 
 .clear{
