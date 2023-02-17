@@ -1,0 +1,19 @@
+.shotGame{
+    width: 700px;
+    height: 650px;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-left: 22px;
+    margin-top: 3px;
+}
+
+.shotGame #canvas{
+    width: 700px;
+    height: 650px;
+    background-color: rgb(148, 197, 216);
+    background-image: url("./dustMap.jpg");
+    background-size: 150% ;
+}

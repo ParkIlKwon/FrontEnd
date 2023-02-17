@@ -55,26 +55,32 @@ function getarr(){
         cnt ++;
         }
     }
+    console.log(arr);
     return arr;
 }
 
 function checkEnd(arr){
     let flag = false;
+    console.log(arr);
+    console.log('fsdafsas');
     // 가로 승리조건
     for(i=0 ; i<3 ; i++){
         if(arr[i][0] != "" && arr[i][0] == arr[i][1] && arr[i][2] == arr[i][1]){
             flag = true;
+            console.log('가로');
         }
     } 
     // 세로 승리조건
     for(i=0 ; i<3 ; i++){
         if(arr[0][i] != "" && arr[0][i] == arr[1][i] && arr[2][i] == arr[1][i]){
             flag = true;
+            console.log('세로');
         }
     } 
     if(arr[1][1] != "" && (arr[1][1] == arr[0][0] && arr[1][1] == arr[2][2]
         || arr[1][1] == arr[0][2] && arr[1][1] == arr[2][0]) ){
             flag = true;
+            console.log('대각');
         }
     if(flag == true){object.runningGame = false;}    
     return flag;

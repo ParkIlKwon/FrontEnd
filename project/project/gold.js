@@ -1,17 +1,12 @@
-class hurdle{
+class gold{
     constructor(){
         this.x = 700;
         this.y = 410;
-        this.dx = 50;
-        this.size = 50;
+        this.dx = 20;
+        this.size = 20;
         this.cwidth = 700;
         this.cheight = 410;
         this.exist = true;
-    }
-
-    init(){
-        this.x = this.cwidth;
-        this.y = this.cheight;
     }
 
     update(){
@@ -24,22 +19,27 @@ class hurdle{
         }
     }
 
-    render(ctx2){
+    init(){
+        this.x = this.cwidth;
+        this.y = this.cheight;
+    }
+
+    render(ctx3){
         if(this.exist == true){
             let img = new Image();
-            img.src = "hurdle.png";
-            ctx2.beginPath();
-            ctx2.drawImage(img,this.x, this.y,this.size,this.size);
-            ctx2.closePath();
+            img.src = "coin.jpg";
+            ctx3.beginPath();
+            ctx3.drawImage(img,this.x, this.y,this.size,this.size);
+            ctx3.closePath();
         }
     }
 
-    collision(px,py){
-        let xValue = this.x - ( px + 50 );
-        let yValue = this.y - ( py + 50 );
+    collisioncoin(px,py){
+        let xValue = this.x - ( px + 30 );
+        let yValue = this.y - ( py + 30 );
         if(this.exist == true && xValue < 0 && yValue < 0 ){
             this.exist = false
-            jcrash();
+            coinCrash();
         }
     }
 }

@@ -10,10 +10,14 @@
 <script src="app.js" defer></script>
 <script src="gameapp.js" defer></script>
 <script src="hurdle.js" defer></script>
+<script src="gold.js" defer></script>
+<script src="target.js" defer></script>
+<script src="shotGame.js" defer></script>
 <link rel="stylesheet" href="index.css">
 <link rel="stylesheet" href="game2048.css">
 <link rel="stylesheet" href="tictactoe.css">
 <link rel="stylesheet" href="jumpGame.css">
+<link rel="stylesheet" href="shotGame.css">
 <script src="app2048.js" defer></script>
 <script src="tictactoe.js" defer></script>
 <script src="jumpGame.js" defer></script>
@@ -109,14 +113,22 @@
                 </table>
             </div>
         </div>
-
         <div class="jumpGame">
             <div class="containerJump">
                 <div class="jlife"></div>
                 <div class="jgragh"></div>
+                <div class="cgragh"></div>
+                <div class="clevel"></div>
                 <canvas id="canvas" width="700" height="650"></canvas>
             </div>
         </div>
+
+        <div class="shotGame">
+            <div class="shotcontainer">
+                <canvas id="canvas" width="700" height="650"></canvas>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>

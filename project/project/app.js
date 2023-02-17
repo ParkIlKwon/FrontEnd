@@ -9,12 +9,32 @@ class obj{
         this.clearObj = document.querySelector(".clear");
         this.game1 = document.querySelector(".game2048");
         this.game2 = document.querySelector(".tic");
+        this.game3 = document.querySelector(".jumpGame");
+        this.game4 = document.querySelector(".shotGame");
         this.life = document.querySelector("#life");
         this.fail = document.querySelector(".fail");
         this.runningGame = false;
+        this.runningGame2 = false;
+        this.runningGame3 = false;
     }
 }
 let object = new obj;
+
+function calcpos() {
+    canvas.addEventListener('mousemove',(e)=>{
+        if(xpos != e.offsetX-30 || ypos != e.offsetY-30){
+            xpos = e.offsetX-30;
+            ypos = e.offsetY-30;
+            ctx.beginPath();
+            ctx.drawImage(crossHair, xpos, ypos, 70, 70);
+            ctx.closePath();
+        }
+    })
+}
+
+let xpos;
+let ypos;
+
 
 let player = { "x": 200, "y": canvas.height, "size": 50, "speed": 3 };
 let strArr = ['-2048-','-틱택토-','-장애물넘기-','   미정'];
@@ -28,7 +48,9 @@ machineImg.src = "./gamemachine.png";
 let exitImg = new Image();
 exitImg.src = "./exit.jpg";
 let playerImg = new Image();  // <img>
-playerImg.src = "./ddangddang.jpg";
+playerImg.src = "./ddangddang.png";
+let crossHair = new Image();
+crossHair.src = "./crosshair.png";
 
 window.addEventListener("keydown", (e) => {
     keyDown[e.key] = true;
@@ -58,6 +80,8 @@ function draw() {
         m.render(ctx);
     })
     drawPlayer();
+    // calcpos()
+    // drawCrosshair();
     crash();
     if(clearCounter == 3){
         drawExit();
@@ -88,6 +112,15 @@ function crash() {
         object.game2.style = 'z-index :3';
         main.style = 'z-index :0';
         object.runningGame = true;
+    }else if(player.y <= 145 && (player.x >= 390 && player.x <=460)){
+        player.y += 50;
+        if(mList[2].clear == true){
+            return;
+        }
+        object.game3.style = 'z-index :3';
+        jinit();
+        main.style = 'z-index :0';
+        object.runningGame2 = true;
     }
 }
 
@@ -106,13 +139,18 @@ function drawPlayer() {
 function movePlayer() {
     if (keyDown["ArrowUp"]) {
         player.y -= player.speed;
+        player.size = 80;
     } else if (keyDown["ArrowRight"]) {
         player.x += player.speed;
-
+        player.size = 80;
     } else if (keyDown["ArrowDown"]) {
         player.y += player.speed;
+        player.size = 80;
     } else if (keyDown["ArrowLeft"]) {
         player.x -= player.speed;
+        player.size = 80;
+    }else{
+        player.size = 50;
     }
 
     if (player.x <= 0) player.x = 0;
