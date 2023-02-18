@@ -16,28 +16,17 @@ class obj{
         this.runningGame = false;
         this.runningGame2 = false;
         this.runningGame3 = false;
+        this.runningGame4 = false;
     }
 }
 let object = new obj;
-
-function calcpos() {
-    canvas.addEventListener('mousemove',(e)=>{
-        if(xpos != e.offsetX-30 || ypos != e.offsetY-30){
-            xpos = e.offsetX-30;
-            ypos = e.offsetY-30;
-            ctx.beginPath();
-            ctx.drawImage(crossHair, xpos, ypos, 70, 70);
-            ctx.closePath();
-        }
-    })
-}
 
 let xpos;
 let ypos;
 
 
 let player = { "x": 200, "y": canvas.height, "size": 50, "speed": 3 };
-let strArr = ['-2048-','-틱택토-','-장애물넘기-','   미정'];
+let strArr = ['-2048-','-틱택토-','-장애물넘기-','   -총게임-'];
 let keyDown = {};
 let gameArr = {};
 let mList = [];
@@ -86,6 +75,11 @@ function draw() {
     if(clearCounter == 3){
         drawExit();
     }
+    if(object.runningGame3 == true){
+        document.body.style.cursor = 'none';
+    }else{
+        document.body.style.cursor = 'auto';
+    }
 }
 
 function drawExit() {
@@ -107,20 +101,33 @@ function crash() {
         player.y += 50;
         if(mList[1].clear == true){
             return;
+        }else{
+            initTic();
+            object.game2.style = 'z-index :3';
+            main.style = 'z-index :0';
+            object.runningGame = true;
         }
-        initTic();
-        object.game2.style = 'z-index :3';
-        main.style = 'z-index :0';
-        object.runningGame = true;
     }else if(player.y <= 145 && (player.x >= 390 && player.x <=460)){
         player.y += 50;
         if(mList[2].clear == true){
             return;
+        }else{
+            object.game3.style = 'z-index :3';
+            jinit();
+            main.style = 'z-index :0';
+            object.runningGame2 = true;
         }
-        object.game3.style = 'z-index :3';
-        jinit();
-        main.style = 'z-index :0';
-        object.runningGame2 = true;
+    }else if(player.y <= 145 && (player.x >= 510 && player.x <=580)){
+        player.y += 50;
+        if(mList[3].clear == true){
+            return;
+        }else{
+            object.game4.style = 'z-index :3';
+            shotGameInit();
+            main.style = 'z-index :0';
+            object.runningGame3 = true;
+            
+        }
     }
 }
 
