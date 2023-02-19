@@ -48,6 +48,89 @@ html,body{
     margin-left: 22px;
 }
 
+.mainScreen{
+    width: 700px;
+    height: 650px;
+    position: absolute;
+    margin-top: 1px;
+    z-index: 3;
+    background-color: rgb(115, 171, 223);
+    background-image: url(mainBack.png);
+    background-size: 110% ;
+    margin-left: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
+.gameTitle{
+    font-size: 90px;
+    font-weight: bolder;
+    color: aliceblue;
+}
 
+.StartClick{
+    animation-name: moveFont;
+    animation-duration:2s;
+    animation-iteration-count:infinite;
+}
+
+@keyframes moveFont{
+    0%{
+        font-size: 100%;
+    }   
+    50%{
+        font-size: 200%;
+    }
+    100%{
+        font-size: 100%;
+    }
+}
+
+.gameOver{
+    width: 700px;
+    height: 650px;
+    position: absolute;
+    font-size: 40px;
+    z-index: -1;
+    margin-left: 22px;
+    background-color: gray;
+    color: rgb(241, 76, 76);
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}    
+
+.gameOver button{
+    border: none;
+    background-color: gray;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.escape{
+    background-color: gray;
+    opacity: 0.7;
+    width: 700px;
+    height: 650px;
+    position: absolute;
+    z-index: -1;
+    font-size: 100px;
+    text-align: center;
+    margin-left: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.escape button{
+    border: none;
+    font-size: 30px;
+    margin-top: 20px;
+    background-color: rgb(143, 168, 168);
+}
 

@@ -32,8 +32,9 @@ table.forEach((e)=>{
         count++;
         
         e.style ='background : skyblue';
-        e.innerHTML = turn == true ?  'o' : 'x';
+        e.innerHTML = 'o' ;
         if(checkEnd(getarr())){
+            clearCounter++;
             mList[1].clear = true;
             object.clearObj.style = 'z-index :5';
         let time = setTimeout(()=>{

@@ -1,7 +1,7 @@
 .shotGame{
     width: 700px;
     height: 650px;
-    z-index: 0;
+    z-index: -1;
     display: flex;
     justify-content: center;
     align-items: center;

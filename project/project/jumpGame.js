@@ -47,20 +47,21 @@ function coinCrash() {
 
 let gapTime = setInterval(()=>{
     if(object.runningGame2 == true){
-        let ranNum = parseInt(Math.random()*5);
-        if(ranNum <= 1){
+        let ranNum = parseInt(Math.random()*6);
+        if(ranNum > 1){
             let h = new hurdle();
             hurdleArr.push(h);
         }else if(ranNum <= 3){
         let c = new gold();
+        c.init();
         coinArr.push(c);
         }
     }
-},1000);
+},700);
 
 function draw2() {
     if(object.runningGame2 == true){
-        ctx2.clearRect(0, 0, canvas.width, canvas.height);
+        ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
         drawP();
         jump();
     
@@ -87,8 +88,11 @@ function draw2() {
                     object.game3.style = 'z-index :-2';
                     object.mainObj.style = 'z-index :3';
                     cat.life = 50;
+                    cat.getCoin = 2;
+                    coinleve.style =`width:${++cat.getCoin}%`;
                 },2000)
             }else if(cat.getCoin >= 50){
+                clearCounter++;
                 object.runningGame2 = false;
                 hurdleArr = [];
                 coinArr = [];

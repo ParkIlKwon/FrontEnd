@@ -40,7 +40,7 @@ function getArray(arr) {
 
     if(score.innerHTML >= 200){
         object.clearObj.style = 'z-index :5';
-
+        clearCounter++;
         let time = setTimeout(()=>{
             object.clearObj.style = 'z-index :-1';
             object.game1.style = 'z-index :-2';
@@ -48,7 +48,7 @@ function getArray(arr) {
         },2000)
         mList[0].clear = true;
     }else if(isover(arr)){
-        failAction();
+        failActions();
     }
 }
 
@@ -68,8 +68,8 @@ function setBackground() {
     })
 }
 
-function failAction() {
-    object.fail.style = 'z-index :5';
+function failActions() {
+    object.fail.style = 'z-index :3';
     let lifeCnt = object.life.innerHTML.length-1
     object.life.innerHTML='';
     for(let i = 0 ; i < lifeCnt ; i++){
@@ -78,12 +78,12 @@ function failAction() {
         let time = setTimeout(()=>{
             object.fail.style = 'z-index :-1';
             object.game1.style = 'z-index :-2';
-            object.mainObj.style = 'z-index :1';
+            object.mainObj.style = 'z-index :3';
         },2000)
     }
 
 homeBtn.addEventListener('click',()=>{
-    failAction();
+    failActions();
 })
 
 topBtn.addEventListener('click',()=>{

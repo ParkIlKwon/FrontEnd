@@ -54,6 +54,7 @@ function shotGameInit() {
                     cat.life = 50;
                 },2000);
         }else if(killCount == 5){
+            clearCounter++;
             clearInterval(shotGameTime);
             object.runningGame3 = false;
             mList[3].clear = true;

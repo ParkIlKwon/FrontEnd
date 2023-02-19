@@ -10,7 +10,8 @@ class gold{
     }
 
     update(){
-        if(this.x < -10){
+        if(this.x < 0){
+            console.log('작동');
             this.y = 600;
             this.x = 600;
             this.exist = false
@@ -20,8 +21,15 @@ class gold{
     }
 
     init(){
-        this.x = this.cwidth;
-        this.y = this.cheight;
+        let rd = parseInt(Math.random()*3)+1;
+        console.log(rd);
+        if(rd == 1){
+            this.x = this.cwidth;
+            this.y = this.cheight; 
+        }else{
+            this.x = this.cwidth;
+            this.y = this.cheight - 50;
+        }
     }
 
     render(ctx3){
@@ -35,10 +43,11 @@ class gold{
     }
 
     collisioncoin(px,py){
-        let xValue = this.x - ( px + 30 );
-        let yValue = this.y - ( py + 30 );
-        if(this.exist == true && xValue < 0 && yValue < 0 ){
-            this.exist = false
+        let pdw = this.x - px;
+        let pdh = this.y-10 - py;
+        let pdc = pdw * pdw + pdh * pdh;
+        if(this.exist == true && pdc <= 200){
+            this.exist = false;
             coinCrash();
         }
     }

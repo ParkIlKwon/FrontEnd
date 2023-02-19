@@ -1,8 +1,13 @@
-let clearCounter = 3;
+let clearCounter = 0;
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 const game1 = document.querySelector(".game2048");
 const main = document.querySelector(".main");
+const mainScreen = document.querySelector(".mainScreen");
+const gameOver = document.querySelector(".gameOver");
+const escapes = document.querySelector(".escape");
+const failbutton = [...document.querySelectorAll(".gameOver button")];
+
 class obj{
     constructor(){
         this.mainObj = document.querySelector(".main");
@@ -16,7 +21,6 @@ class obj{
         this.runningGame = false;
         this.runningGame2 = false;
         this.runningGame3 = false;
-        this.runningGame4 = false;
     }
 }
 let object = new obj;
@@ -24,13 +28,12 @@ let object = new obj;
 let xpos;
 let ypos;
 
-
-let player = { "x": 200, "y": canvas.height, "size": 50, "speed": 3 };
+let player = { "x": canvas.width/2, "y": canvas.height/2, "size": 50, "speed": 5 };
 let strArr = ['-2048-','-틱택토-','-장애물넘기-','   -총게임-'];
 let keyDown = {};
 let gameArr = {};
 let mList = [];
-let time = window.setInterval(draw, 10);
+let time = window.setInterval(draw, 25);
 
 let machineImg = new Image();
 machineImg.src = "./gamemachine.png";
@@ -53,26 +56,78 @@ window.onload = function () {
     let cnt = 0;
     for (let i = 0; i < 4; i++) {
         let m = new game();
-        
         mList.push(m);
     }
-
+    
     mList.forEach((e) => {e.init(index+=120 ,90,50,strArr[cnt++])})
     mList.forEach((e) => {console.log(e);})
     setGame();
 }
 
+escapes.addEventListener('click',()=>{
+    escapes.style = 'z-index : -1';
+    mainScreen.style = 'z-index:3';
+    player.x = canvas.width/2;
+    player.y = canvas.height/2;
+    for(let i = 0 ; i < mList.length ; i++){
+        mList[i].clear = false;
+    }
+    clearCounter = 0;
+    object.life.innerHTML = '♥♥♥';
+    failcheck = false;
+    esCheck = false;
+});
+
+mainScreen.addEventListener('click',()=>{
+    mainScreen.style = 'z-index:-1';
+});
+
+function failScreenAction() {
+    gameOver.style = 'z-index : 5'
+    failbutton.forEach((b)=>{
+        b.addEventListener('mouseover',()=>{
+            b.style = 'font-size:150%';
+        });
+        b.addEventListener('mouseout',()=>{
+            b.style = 'font-size:100%';
+        });
+        b.addEventListener('click',()=>{
+            player.x = canvas.width/2;
+            player.y = canvas.height/2;
+            if(b.innerHTML == 'retry'){
+                main.style = 'z-index :2';
+                gameOver.style = 'z-index : 0' ;
+            }else{  
+                mainScreen.style = 'z-index : 2' ;
+                gameOver.style = 'z-index : -1' ;
+                main.style = 'z-index : 1';
+            }   
+            for(let i = 0 ; i < mList.length ; i++){
+                mList[i].clear = false;
+            }
+            clearCounter = 0;
+            object.life.innerHTML = '♥♥♥';
+            failcheck = false;
+        });
+    })
+}
+
+let failcheck = false;
+
 function draw() {
+    if(failcheck == false && object.life.innerHTML.length == 0){
+        failcheck = true;
+        let ti = setTimeout(()=>{failScreenAction();},2000)
+    };
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     movePlayer();
     mList.forEach((m)=>{
         m.render(ctx);
     })
     drawPlayer();
-    // calcpos()
-    // drawCrosshair();
     crash();
-    if(clearCounter == 3){
+    if(clearCounter == 4){
+        esCheck = true;
         drawExit();
     }
     if(object.runningGame3 == true){
@@ -81,6 +136,8 @@ function draw() {
         document.body.style.cursor = 'auto';
     }
 }
+
+let esCheck = false;
 
 function drawExit() {
     ctx.beginPath();
@@ -126,8 +183,10 @@ function crash() {
             shotGameInit();
             main.style = 'z-index :0';
             object.runningGame3 = true;
-            
         }
+    }else if(esCheck == true && player.y <= 50 && (player.x >= 0 && player.x <=60) ){
+        main.style = 'z-index :0';
+        escapes.style = 'z-index : 3';
     }
 }
 
