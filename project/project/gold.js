@@ -35,7 +35,7 @@ class gold{
     render(ctx3){
         if(this.exist == true){
             let img = new Image();
-            img.src = "coin.jpg";
+            img.src = "coin.png";
             ctx3.beginPath();
             ctx3.drawImage(img,this.x, this.y,this.size,this.size);
             ctx3.closePath();
@@ -46,7 +46,7 @@ class gold{
         let pdw = this.x - px;
         let pdh = this.y-10 - py;
         let pdc = pdw * pdw + pdh * pdh;
-        if(this.exist == true && pdc <= 200){
+        if(this.exist == true && pdc <= 250){
             this.exist = false;
             coinCrash();
         }
